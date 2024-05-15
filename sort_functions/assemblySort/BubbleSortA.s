@@ -41,26 +41,26 @@ BubbleSortOuter:
   sub x6,x1,x2		// length - i
   sub x6,x6,#1		// (length - i) - 1
   BubbleSortInner:
-    ldr w4,[x0]
-    ldr w5,[x0,#4]
+    ldr w4,[x0]		// Load first index
+    ldr w5,[x0,#4]	// load index + 1
     
-    cmp w4,w5
-    blt dontSwap
+    cmp w4,w5		// check if index is less than index + 1 
+    blt dontSwap	// if true, dont swap
 
-    str w5,[x0]
-    str w4,[x0,#4]
+    str w5,[x0]		// w4 = w5
+    str w4,[x0,#4]	// w5 = w4
     dontSwap:
     
-    add x0,x0,#4
-    add x3,x3,#1
+    add x0,x0,#4	// increment starting index
+    add x3,x3,#1	// increment loop counter
     
     cmp x3,x6		// j < length - i - 1
     blt BubbleSortInner	// if true, then repeat algorithm
 
-  add x2,x2,#1
-  b   BubbleSortOuter
+  add x2,x2,#1		// increment loop counter
+  b   BubbleSortOuter	// loop algorithm
 
 
 BubbleSortReturn:
-  ldr LR,[SP],#16
-  ret LR
+  ldr LR,[SP],#16	// pop LR
+  ret LR		// return to LR

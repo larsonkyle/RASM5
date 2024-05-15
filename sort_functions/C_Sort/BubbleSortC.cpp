@@ -1,6 +1,6 @@
 #include "BubbleSortC.h"
 
-void BubbleSort (int a[], int length)
+void BubbleSortC(int a[], int length)
 {
 	int i, j, temp;
 	
